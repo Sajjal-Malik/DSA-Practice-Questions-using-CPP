@@ -30,10 +30,10 @@ bool isSortedOptimal(int nums[], int size)
     for (int i = 1; i < size; i++)
     {
         // Comparing the current element against its immediate predecessor
-        int currentElement = nums[i];
         int previousElement = nums[i - 1];
+        int currentElement = nums[i];
 
-        if (currentElement < previousElement)
+        if (previousElement > currentElement)
             return false;
     }
     return true;
