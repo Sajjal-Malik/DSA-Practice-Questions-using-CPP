@@ -24,15 +24,15 @@ int main()
     int numbers[] = {1, 2, 3, 4, 5};
     int length = sizeof(numbers) / sizeof(numbers[0]);
 
-    std::cout << "Performing Optimal Shift In-Place..." << std::endl;
+    cout << "Performing Optimal Shift In-Place..." << endl;
     leftShiftByOne(numbers, length);
 
-    std::cout << "Current State of Array: ";
+    cout << "Current State of Array: ";
     for (int value : numbers)
     {
-        std::cout << value << " ";
+        cout << value << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
     return 0;
 }
