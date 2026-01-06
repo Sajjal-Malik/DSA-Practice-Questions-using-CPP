@@ -18,42 +18,42 @@ void rotateArrayBruteForce(int dataValues[], int totalSize, int shiftAmount, str
     if (moveDirection == "left")
     {
         // 1. Store first 'shiftAmount' elements in the buffer
-        for (int i = 0; i < shiftAmount; i++)
+        for (int currIndex = 0; currIndex < shiftAmount; currIndex++)
         {
-            tempBuffer[i] = dataValues[i];
+            tempBuffer[currIndex] = dataValues[currIndex];
         }
 
         // 2. Shift the remaining elements to the front
-        for (int i = shiftAmount; i < totalSize; i++)
+        for (int currIndex = shiftAmount; currIndex < totalSize; currIndex++)
         {
-            dataValues[i - shiftAmount] = dataValues[i];
+            dataValues[currIndex - shiftAmount] = dataValues[currIndex];
         }
 
         // 3. Move the buffered elements to the end of the array
-        for (int i = 0; i < shiftAmount; i++)
+        for (int currIndex = 0; currIndex < shiftAmount; currIndex++)
         {
-            dataValues[totalSize - shiftAmount + i] = tempBuffer[i];
+            dataValues[totalSize - shiftAmount + currIndex] = tempBuffer[currIndex];
         }
     }
     else if (moveDirection == "right")
     {
         // 1. Store the last 'shiftAmount' elements in the buffer
-        for (int i = 0; i < shiftAmount; i++)
+        for (int currIndex = 0; currIndex < shiftAmount; currIndex++)
         {
-            tempBuffer[i] = dataValues[totalSize - shiftAmount + i];
+            tempBuffer[currIndex] = dataValues[totalSize - shiftAmount + currIndex];
         }
 
         // 2. Shift the remaining elements to the back
         // Start from the end to avoid overwriting values
-        for (int i = totalSize - 1; i >= shiftAmount; i--)
+        for (int currIndex = totalSize - 1; currIndex >= shiftAmount; currIndex--)
         {
-            dataValues[i] = dataValues[i - shiftAmount];
+            dataValues[currIndex] = dataValues[currIndex - shiftAmount];
         }
 
         // 3. Move the buffered elements to the front of the array
-        for (int i = 0; i < shiftAmount; i++)
+        for (int currIndex = 0; currIndex < shiftAmount; currIndex++)
         {
-            dataValues[i] = tempBuffer[i];
+            dataValues[currIndex] = tempBuffer[currIndex];
         }
     }
 }
@@ -65,33 +65,31 @@ void rotateArrayBruteForce(int dataValues[], int totalSize, int shiftAmount, str
  */
 void rotateArrayOptimal(vector<int> &numbers, int shiftCount, string direction)
 {
-    int n = numbers.size();
-    if (n == 0)
+    int size = numbers.size();
+    if (size == 0)
         return;
 
     // Ensure shiftCount is within the bounds of array size
-    shiftCount %= n;
+    shiftCount %= size;
     if (shiftCount == 0)
         return;
 
     if (direction == "left")
     {
-        // To rotate left by K:
-        // 1. Reverse the first K elements
-        // 2. Reverse the remaining N-K elements
-        // 3. Reverse the whole array
+        // To rotate left by K: 1. Reverse the first K elements
         reverse(numbers.begin(), numbers.begin() + shiftCount);
+        // 2. Reverse the remaining N-K elements
         reverse(numbers.begin() + shiftCount, numbers.end());
+        // 3. Reverse the whole array
         reverse(numbers.begin(), numbers.end());
     }
     else if (direction == "right")
     {
-        // To rotate right by K:
-        // 1. Reverse the whole array
-        // 2. Reverse the first K elements
-        // 3. Reverse the remaining N-K elements
+        // To rotate right by K: 1. Reverse the whole array
         reverse(numbers.begin(), numbers.end());
+        // 2. Reverse the first K elements
         reverse(numbers.begin(), numbers.begin() + shiftCount);
+        // 3. Reverse the remaining N-K elements
         reverse(numbers.begin() + shiftCount, numbers.end());
     }
 }
@@ -106,9 +104,9 @@ int main()
     rotateArrayBruteForce(dataset, itemCount, positionsToMove, targetDirection);
 
     // Print the final result
-    for (int i = 0; i < itemCount; i++)
+    for (int index = 0; index < itemCount; index++)
     {
-        cout << dataset[i] << " ";
+        cout << dataset[index] << " ";
     }
 
     return 0;
