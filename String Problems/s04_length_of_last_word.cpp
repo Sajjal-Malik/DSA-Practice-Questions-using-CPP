@@ -5,7 +5,7 @@ using namespace std;
  * Calculates the length of the last word in a string by manually
  * traversing from the end of the string backwards.
  */
-int getLengthOfLastWordManual(std::string input_text)
+int getLengthOfLastWordManual(string input_text)
 {
     int currentIndex = input_text.length() - 1;
     int wordLength = 0;
@@ -30,28 +30,10 @@ int getLengthOfLastWordManual(std::string input_text)
  * Calculates the length of the last word using C++ Standard Library
  * string manipulation functions for cleaner, more expressive code.
  */
-int getLengthOfLastWordSTL(std::string input_text)
+int getLengthOfLastWordSTL(string input_text)
 {
-    // Trim trailing whitespace by finding the last non-space character
-    size_t lastCharPos = input_text.find_last_not_of(' ');
-
-    // Handle edge case: string is empty or contains only spaces
-    if (lastCharPos == std::string::npos)
-        return 0;
-
-    // Create a temporary string containing only the content up to the last word
-    std::string trimmedText = input_text.substr(0, lastCharPos + 1);
-
-    // Find the position of the space immediately preceding the last word
-    size_t lastSpacePos = trimmedText.find_last_of(' ');
-
-    // If no space exists, the entire string is one word; otherwise, extract the suffix
-    if (lastSpacePos == std::string::npos)
-    {
-        return trimmedText.length();
-    }
-
-    return trimmedText.substr(lastSpacePos + 1).length();
+    input_text.erase(input_text.find_last_not_of(' ') + 1);
+    return input_text.substr(input_text.find_last_of(' ') + 1).length();
 }
 
 int main()
