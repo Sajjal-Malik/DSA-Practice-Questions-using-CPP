@@ -28,10 +28,8 @@ int main()
 {
     string testWord = "leetcode";
 
-    // Compute the score using our function
     int finalScore = calculateStringScore(testWord);
 
-    // Display the result
     cout << "The score of the string \"" << testWord << "\" is: " << finalScore << endl;
 
     return 0;

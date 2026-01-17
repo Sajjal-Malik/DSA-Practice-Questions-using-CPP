@@ -57,15 +57,12 @@ void printVector(const string &label, const vector<int> &vec)
 
 int main()
 {
-    // Initialize a sample vector
     vector<int> originalArray = {1, 4, 1, 2};
     printVector("Original Array", originalArray);
 
-    // 1. Using the standard concatenation method
     vector<int> standardResult = getConcatenation(originalArray);
     printVector("Standard Method", standardResult);
 
-    // 2. Using the optimal concatenation method
     vector<int> optimalResult = getConcatenationOptimal(originalArray);
     printVector("Optimal Method ", optimalResult);
 

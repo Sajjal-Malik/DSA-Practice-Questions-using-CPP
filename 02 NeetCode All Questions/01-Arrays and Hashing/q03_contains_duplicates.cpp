@@ -58,13 +58,10 @@ bool containsDuplicateUsingUnorderedSet(vector<int> &nums)
 
 int main()
 {
-    // Initialize a test vector
     vector<int> arr = {1, 2, 3, 4, 5, 1};
 
-    // Execute the chosen logic (using Brute Force here as an example)
     bool duplicateExist = containsDuplicate(arr);
 
-    // Output the result to the console
     if (duplicateExist)
         cout << "Array contains duplicate" << endl;
     else

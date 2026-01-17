@@ -54,7 +54,6 @@ int main()
 {
     vector<int> my_numbers = {2, 4, 5, 3, 1, 2};
 
-    // FIX: Store the result returned by the function
     vector<int> processed_array = getRightSideMaxOptimal(my_numbers);
 
     cout << "Original Array: ";

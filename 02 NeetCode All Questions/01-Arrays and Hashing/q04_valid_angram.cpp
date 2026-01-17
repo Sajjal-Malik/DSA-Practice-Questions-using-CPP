@@ -61,14 +61,11 @@ bool isAnagramUsingHashMap(string firstString, string secondString)
 
 int main()
 {
-    // Input strings
     string firstString = "racecar";
     string secondString = "carrace";
 
-    // Check if the strings are anagrams using Hash Map method
     bool isAnagram = isAnagramUsingHashMap(firstString, secondString);
 
-    // Output result
     if (isAnagram)
         cout << "true";
     else
